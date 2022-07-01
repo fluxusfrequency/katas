@@ -73,7 +73,7 @@ function crushVectors(vectors) {
 
     if (count >= 3) {
       // do nothing
-    } else if (stack.length > 0 && topOfStackDyad[0] == char) {
+    } else if (stack.length > 0 && topOfStackDyad[0] === char) {
       stack.pop();
       const newCount = count + topOfStackDyad[1];
       if (newCount >= 3) {
@@ -84,7 +84,7 @@ function crushVectors(vectors) {
     } else {
       stack.push(dyad);
     }
-  }, '');
+  });
 
   return stack;
 }
