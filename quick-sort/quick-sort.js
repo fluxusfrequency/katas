@@ -32,18 +32,18 @@ function swap(arr, i, j) {
   arr[j] = tmpI;
 }
 
-function partition(input, low, high) {
+function partition(input, low, high) { // has side effects: the input is mutated by the call to swap()
   const pivot = input[Math.floor((high + low) / 2)];
   let i = low;
   let j = high;
   while (i <= j) {
-    while(input[i] < pivot) {
+    while(input[i] < pivot) { // move up from the bottom of the input until we find an element greater than the pivot
       i++;
     }
-    while(input[j] > pivot) {
+    while(input[j] > pivot) { // move down from the top of the input until we find an element smaller than the pivot
       j--;
     }
-    if (i <= j) {
+    if (i <= j) { // once we have passed the pivot we should not swap
       swap(input, i, j);
       i++;
       j--;
@@ -52,9 +52,7 @@ function partition(input, low, high) {
   return i;
 }
 
-function quickSort(input, low, high) {
-  low = low || 0;
-  high = high || input.length - 1;
+function quickSort(input, low = 0, high = input.length - 1) {
   if (input.length > 1) {
     const index = partition(input, low, high);
     if (low < index - 1) {
